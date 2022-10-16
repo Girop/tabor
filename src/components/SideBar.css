@@ -1,0 +1,70 @@
+.SideBar {
+    background-color: #276967;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    color: #d6d1af;
+}
+
+.top-bar {
+    height: 50%;
+}
+
+.Reports {
+    height: 50%;
+    width: 100%;
+    background-color: #041721;
+}
+
+.LineIds {
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.LineIdButton.active {
+    background-color: grey;
+}
+
+.LineIdButton {
+    background-color: #d6d1af;
+    width: 25%;
+    color: #041721;
+    /* height: 25px; */
+    border-radius: 3px;
+    outline: 2px solid #276967;
+}
+
+.LineIdButton:hover {
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 0;
+}
+
+.MapContainer {
+
+    border-right: 10px solid #df912d;
+}
+
+.report-problem-button {
+    background-color: #df912d;
+    color: #041721;
+}
+
+.ReportFeedItem {
+    border-top: 2px solid #df912d;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 700px) {
+    .SideBar {
+        width: 40%;
+    }
+}

@@ -1,0 +1,33 @@
+.inactiveMarker{
+    background-color: #d83b01;
+    border-radius: 50%;
+    color: #fff;
+    height: 2.5em;
+    width: 2.5em;
+    border: 1px solid transparent;
+    z-index: 0;
+}
+
+.inactiveMarker:hover{
+    background-color: #338885;
+}
+
+
+.activeMarker {
+    z-index: 1;
+    background-color: #338885;
+    border-radius: 12px;
+    padding: 5px;
+    min-width: 90px;
+}
+
+.lineNumber {
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+}
+
+.passengers:first-of-type {
+    padding-top: 2px;
+}
+
+.passengers {}

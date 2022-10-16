@@ -1,0 +1,47 @@
+.report-message {
+    font-size: 1.3rem;
+}
+
+
+.report-panel-wrapper {
+    background-color: #d6d1af;
+    border: 2px solid #4a4a4a;
+    border-radius: 20px;
+    width: 80vh;
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    color: black;
+}
+
+.event-container {
+    position: relative;
+    width: 120px;
+    height: 35vh;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.event {
+    padding: 15px 8px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #877272;
+    width: 80%;
+    user-select: none;
+    /* flex-basis: 100%; */
+}
+
+.event:last-of-type {
+    margin-bottom: 20px;
+}
+
+.event:hover {
+    background-color: #877272;
+    transition: background-color 0.75s ease-in-out;
+}
