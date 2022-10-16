@@ -7,7 +7,12 @@ export function calculateDistance(lat1, lng1, lat2, lng2) {
 	return Math.sqrt((lat1 - lat2) ** 2 + (lng1 - lng2) ** 2)
 }
 
-function MapContainer({ vehicles, userLocation, setUserLocation }) {
+function MapContainer({
+	vehicles,
+	userLocation,
+	setUserLocation,
+	highlightedReportVehicle,
+}) {
 	const [key, setKey] = useState(false)
 	const [vehiclesState, setVehiclesState] = useState([])
 	const [userLocationState, setUserLocationState] = useState({})
@@ -24,7 +29,7 @@ function MapContainer({ vehicles, userLocation, setUserLocation }) {
 	useEffect(() => {
 		setUserLocation(userLocationState)
 	}, [userLocationState])
-
+	const sksLocation = { lat: 51.10888707582641, lng: 17.05675899350759 }
 	// Wrocław location
 	const deafultZoom = 13
 	const deafultCenter = {
@@ -54,22 +59,23 @@ function MapContainer({ vehicles, userLocation, setUserLocation }) {
 
 		let lowestDist = Infinity
 		let currentClosest = null
+
 		for (let bus of vehicles) {
 			const dist = calculateDistance(
-				userLocationState['lat'],
-				bus['lat'],
 				userLocationState['lng'],
-				bus['lng']
+				bus['lng'],
+				userLocationState['lat'],
+				bus['lat']
 			)
 
-			if (dist < lowestDist) {
+			if (dist <= lowestDist) {
 				lowestDist = dist
 				currentClosest = bus
 			}
 		}
 
-		setZoom(14)
 		setClosestBusLocation(currentClosest)
+		setZoom(14)
 	}, [vehicles])
 
 	useEffect(() => {
@@ -89,18 +95,36 @@ function MapContainer({ vehicles, userLocation, setUserLocation }) {
 					zoom={zoom}
 					yesIWantToUseGoogleMapApiInternals
 				>
-					{vehiclesState.map((bus, id) => (
-						// With avalible bus data change this
+					{highlightedReportVehicle ? (
 						<Marker
-							key={id}
-							lng={bus['lng']}
-							lat={bus['lat']}
+							key={-1}
+							lng={sksLocation['lng']}
+							lat={sksLocation['lat']}
 							passengers={Math.floor(Math.random() * 106)}
 							disabledPassengers={Math.floor()}
 							isOpen={areMarkersOpen}
 							setIsOpen={setAreMarkersOpen}
 						/>
-					))}
+					) : (
+						''
+					)}
+
+					{vehiclesState.map((bus, id) => {
+						// console.log(bus['lng'], bus['lng'])
+						return (
+							// With avalible bus data change this
+
+							<Marker
+								key={id}
+								lng={bus['lng']}
+								lat={bus['lat']}
+								passengers={Math.floor(Math.random() * 106)}
+								disabledPassengers={Math.floor()}
+								isOpen={areMarkersOpen}
+								setIsOpen={setAreMarkersOpen}
+							/>
+						)
+					})}
 				</GoogleMapReact>
 			) : (
 				<div>Loading map ...</div>

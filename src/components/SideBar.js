@@ -4,7 +4,16 @@ import Reports from './Reports'
 import LineIds from './LineIds'
 import { calculateDistance } from './MapContainer'
 
-function SideBar({ lineId, setLineId, value, vehicles, setVehicles, userLocation }) {
+function SideBar({
+	lineId,
+	setLineId,
+	value,
+	vehicles,
+	setVehicles,
+	userLocation,
+	activeReportVehicle,
+	setActiveReportVehicle,
+}) {
 	const id = useId()
 	const [input, setInput] = useState(value ?? '')
 	const [filteredData, setFilteredData] = useState([])
@@ -25,7 +34,6 @@ function SideBar({ lineId, setLineId, value, vehicles, setVehicles, userLocation
 				closestVehicle = v
 				minDistance = distance
 			}
-
 			// console.log(v['lat'], userLocation['lat'])
 			// console.log(v['lng'], userLocation['lng'])
 		}
@@ -80,6 +88,7 @@ function SideBar({ lineId, setLineId, value, vehicles, setVehicles, userLocation
 
 				<input
 					id={id}
+					placeholder='type in your line...'
 					value={input}
 					onInput={e => {
 						setInput(e.target.value)
@@ -98,7 +107,11 @@ function SideBar({ lineId, setLineId, value, vehicles, setVehicles, userLocation
 					setActiveId={setLineId}
 				/>
 			</div>
-			<Reports {...findBoardedVehicle()} />
+			<Reports
+				{...findBoardedVehicle()}
+				activeReportVehicle={activeReportVehicle}
+				setActiveReportVehicle={setActiveReportVehicle}
+			/>
 		</div>
 	)
 }

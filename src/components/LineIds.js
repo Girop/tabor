@@ -3,7 +3,6 @@ import LineIdButton from './LineIdButton'
 function LineIds({ ids, activeId, setActiveId }) {
 	const [localActiveId, setLocalActiveId] = useState(activeId)
 	useEffect(() => {
-		console.log(localActiveId, 'chanvged')
 		setLocalActiveId(activeId)
 	}, [activeId, localActiveId])
 	return (

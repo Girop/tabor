@@ -20,6 +20,7 @@ function ReportPanel({ postReport, setReportPanelActive }) {
 
 	return (
 		<div className='report-panel-wrapper'>
+			
 			<p className='report-message'>Report problem</p>
 			<div className='event-container'>
 				<Event eventType={'Passenger injury'} />

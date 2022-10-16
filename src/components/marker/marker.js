@@ -16,8 +16,13 @@ function Marker({
 	womenPregnant,
 	isOpen,
 	setIsOpen,
+	highlightedReportId,
 }) {
 	const [active, setActive] = useState(false)
+	useEffect(() => {
+		console.log(highlightedReportId)
+		setActive(highlightedReportId !== null)
+	}, [highlightedReportId])
 	useEffect(() => {
 		if (!isOpen) {
 			setActive(isOpen)
@@ -28,8 +33,7 @@ function Marker({
 			className='marker-wrapper'
 			onClick={e => {
 				setActive(!active)
-				if (!isOpen){
-
+				if (!isOpen) {
 					setIsOpen(!active)
 				}
 			}}
@@ -38,7 +42,7 @@ function Marker({
 				<>
 					<p className='lineNumber'>{lineNumber}</p>
 					<div className='activeMarker'>
-						<p>Avalible places</p>
+						<p className='seats'>Avalible seats</p>
 						<div className='passengers'>
 							<PlaceUsage
 								typeName={'Passengers'}

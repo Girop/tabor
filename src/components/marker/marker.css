@@ -12,6 +12,10 @@
     background-color: #338885;
 }
 
+.seats{
+    padding-bottom: 3px;
+    border-bottom: 1px solid black;
+}
 
 .activeMarker {
     z-index: 1;
@@ -26,8 +30,5 @@
     border-bottom: 1px solid black;
 }
 
-.passengers:first-of-type {
-    padding-top: 2px;
-}
 
 .passengers {}
